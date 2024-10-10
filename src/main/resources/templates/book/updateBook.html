@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update Book</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <h1>UPDATE BOOK</h1>
+        <h3 class="text-danger" th:text="${error}"></h3>
+        <form th:action="@{/books/updateBook}" th:object="${b}" method="post">
+            <table class="table">
+                <tr>
+                    <td>Book id: </td>
+                    <td><input th:field="*{bookId}" readonly/> </td>
+                </tr>
+                <tr>
+                    <td>Book name: </td>
+                    <td><input th:field="*{bookName}"/> </td>
+                </tr>
+                <tr>
+                    <td>Category: </td>
+                    <td>
+                        <select th:field="*{cate.cateId}">
+                            <option value="">--- Choose ---</option>
+                            <option th:each="c:${listCate}" th:value="${c.cateId}" th:text="${c.cateName}"></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Publisher: </td>
+                    <td><input th:field="*{publisher}"/> </td>
+                </tr>
+                <tr>
+                    <td>Year publish: </td>
+                    <td><input th:field="*{yearPublish}" type="number"/> </td>
+                </tr>
+                <tr>
+                    <td>Pages: </td>
+                    <td><input th:field="*{pages}" type="number"/> </td>
+                </tr>
+                <tr>
+                    <td>Price: </td>
+                    <td><input th:field="*{price}" type="number"/> </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Update"/>
+                    <input type="reset" value="Clear"/> </td>
+                </tr>
+            </table>
+        </form>
+        <a th:href="@{/books}">Back</a>
+    </div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
